@@ -51,7 +51,7 @@
 # print(a*b)
 
 
-#CAN_CONSTRUCT
+# CAN CONSTRUCT
 # def can_construct(word, letter):
 #     word, letter = list(word), list(letter)
 #     for i in word:
