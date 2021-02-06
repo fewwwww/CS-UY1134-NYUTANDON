@@ -50,7 +50,8 @@
 # print(a-b)
 # print(a*b)
 
-#CAN CONSTRUCT
+
+#CAN_CONSTRUCT
 # def can_construct(word, letter):
 #     word, letter = list(word), list(letter)
 #     for i in word:
