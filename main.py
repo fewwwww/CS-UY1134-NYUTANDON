@@ -1,4 +1,3 @@
-# LAB 1
 
 
 # ADD BINARY NUMBER
