@@ -1,3 +1,6 @@
+# LAB 1
+
+
 # ADD BINARY NUMBER
 # def add_binary(a, b):
 #     a, b, c = a[::-1], b[::-1], []
@@ -65,4 +68,7 @@
 # print(can_construct("apples", "aples"))
 
 
-# 
+# LAB 2
+
+
+
