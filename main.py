@@ -63,3 +63,18 @@
 #
 #
 # print(can_construct("apples", "aples"))
+
+
+# BINARY SEARCH
+# def binary_search(lst, val):
+#     left = 0
+#     right = len(lst)-1
+#     while left <= right:
+#         mid = (left+right)/2
+#         if val == lst[mid]:
+#             return mid
+#         elif val < lst[mid]:
+#             right = mid
+#         elif val > lst[mid]:
+#             left = mid
+#     return None
