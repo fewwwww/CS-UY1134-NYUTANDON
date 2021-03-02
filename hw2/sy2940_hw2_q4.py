@@ -4,4 +4,3 @@ def e_approx(n):
         div /= i
         e += div
     return e
-
