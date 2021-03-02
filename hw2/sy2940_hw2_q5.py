@@ -8,4 +8,3 @@ def split_parity(lst):
         else:
             b += 1
     return lst
-
