@@ -69,25 +69,28 @@ class ArrayList:
         return self * times
 
     def insert(self, index, val):
-        if index < -self.n or index > self.n - 1:
-            raise IndexError("Index Error")
-        if self.n == self.capacity:
-            self.resize(2 * self.capacity)
-        for i in range(self.n, index, -1):
-            self.data_arr[i] = self.data_arr[i - 1]
-        self.data_arr[index] = val
+        if (not (-self.n <= index <= self.n - 1)):
+            raise IndexError("invalid index")
+        self.append(0)
+        if index < 0:
+            time = -index - 1
+        else:
+            time = len(self) - index - 1
+        for i in range(time):
+            self[-i - 1] = self[-i - 2]
+        self[index] = val
 
     def pop(self, index=-1):
         if self.n == 0:
-            raise IndexError("Empty Array")
-        elif index < -self.n or index > self.n - 1:
-            raise IndexError("Invalid Index")
+            raise IndexError("empty array")
+        if (not (-self.n <= index <= self.n - 1)):
+            raise IndexError("invalid index")
+        outcome = self[index]
         if index < 0:
             index += self.n
         for i in range(index, self.n - 1):
             self[i] = self[i + 1]
         self.n -= 1
-        if self.n <= (self.capacity // 4):
+        if self.n < (self.capacity // 4):
             self.resize(self.capacity // 2)
-        popped = self[index]
-        return popped
+        return outcome
