@@ -78,3 +78,45 @@
 #         elif val > lst[mid]:
 #             left = mid
 #     return None
+
+
+lst = [1, 5, 3, 2, 6, 7, 4]
+# selection
+for i in range(len(lst)-1):
+    minI = i
+    for j in range(i+1, len(lst)):
+        if lst[j] < lst[minI]:
+            minI = j
+    lst[i], lst[minI] = lst[minI], lst[i]
+print(lst)
+lst = [1, 5, 3, 2, 6, 7, 4]
+# insertion
+for i in range(1, len(lst)):
+    val = lst[i]
+    j = i-1
+    while j >= 0 and lst[j] > val:
+        lst[j+1] = lst[j]
+        j -= 1
+    lst[j+1] = val
+print(lst)
+lst = [1, 5, 3, 2, 6, 7, 4]
+
+
+def mergeSort(lst):
+    def merge(left, right):
+        result = []
+        while len(left) > 0 and len(right) > 0:
+            if left[0] < right[0]:
+                result.append(left.pop(0))
+            else:
+                result.append(right.pop(0))
+        result += left
+        result += right
+        return result
+
+    if len(lst) <= 1:
+        return lst
+    mid = len(lst)//2
+    left = mergeSort(lst[:mid])
+    right = mergeSort(lst[mid:])
+    return merge(left, right)
