@@ -1,7 +1,7 @@
 from ArrayStack import ArrayStack
 
 
-class AlternativeQueue:
+class Queue:
     def __init__(self):
         self.stackA = ArrayStack()
         self.stackB = ArrayStack()
