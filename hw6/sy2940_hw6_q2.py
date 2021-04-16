@@ -6,6 +6,8 @@ class Integer:
         self.data = DoublyLinkedList()
         for i in range(len(num_str)):
             self.data.add_last(int(num_str[i]))
+        while self.data.header.next.data == 0 and len(self.data) > 1:
+            self.data.delete_first()
 
     def __add__(self, other):
         sumNum = Integer("")

@@ -4,16 +4,20 @@ from DoublyLinkedList import DoublyLinkedList
 class CompactString:
     def __init__(self, orig_str):
         self.data = DoublyLinkedList()
-        # each char exist at least 1 time, so start with 1.
-        occurChar = 1
-        for indexChar in range(len(orig_str)-1):
-            if orig_str[indexChar] != orig_str[indexChar + 1]:
-                self.data.add_last((orig_str[indexChar + 1], occurChar))
-                occurChar = 1
+        # start with 1 because each char in it at least exist once
+        occurCount = 1
+        # avoid indexing out of range
+        for i in range(len(orig_str)-1):
+            # if char is different from next one
+            if orig_str[i] != orig_str[i+1]:
+                self.data.add_last((orig_str[i - 1], occurCount))
+                # set count back to one
+                occurCount = 1
             else:
-                occurChar += 1
-        if len(orig_str) != 0:
-            self.data.add_last((orig_str[len(orig_str) - 1], occurChar))
+                occurCount += 1
+        # consider the case that it only have one item
+        if len(orig_str) >= 1:
+            self.data.add_last((orig_str[-1], occurCount))
 
     def __add__(self, other):
         concatStr = CompactString("")
@@ -134,11 +138,8 @@ class CompactString:
         return p1.data[0] > p2.data[0]
 
     def __repr__(self):
-        # p is the pointer
-        p = self.data.header.next
-        returnedStr = ""
-        while p.data is not None:
-            returnedStr += p.data[0] * p.data[1]
-            # move pointer forward
-            p = p.next
-        return returnedStr
+        returnStr = ''
+        for node in self.data.__iter__():
+            tempStr = node[0] * node[1]
+            returnStr += tempStr
+        return returnStr
