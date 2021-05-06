@@ -1,4 +1,14 @@
+from LinkedBinaryTree import LinkedBinaryTree
+
+
+class EmptyTree(Exception):
+    pass
+
+
 def is_height_balanced(bin_tree):
+    if bin_tree.root is None:
+        raise EmptyTree("Empty binary tree")
+
     def is_sub_balanced(root):
         if root is None:
             return (True, 0)
@@ -9,6 +19,4 @@ def is_height_balanced(bin_tree):
                                                           rightRoute[1]) > 1:
             return (False, height)
         return (True, height)
-    if bin_tree.root is None:
-        raise Exception("Empty binary tree")
     return is_sub_balanced(bin_tree.root)[0]
