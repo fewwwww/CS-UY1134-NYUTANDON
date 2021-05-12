@@ -1,4 +1,4 @@
-from LinkedBinaryTree import LinkedBinaryTree
+# from LinkedBinaryTree import LinkedBinaryTree
 
 
 class EmptyTree(Exception):
@@ -28,3 +28,26 @@ def subtree_min_and_max(root):
     else:
         left = subtree_min_and_max(root.left)
         return (min(left[0], root.data), max(left[1], root.data))
+
+
+def is_size_tree(bin_tree):
+    result = is_size_tree_helper(bin_tree.root)
+    return result[0]
+
+
+def is_size_tree_helper(root):
+    if not root.left and not root.right:
+        return (root.data == 1, 1)
+    if root.left and root.right:
+        left = is_size_tree_helper(root.left)
+        right = is_size_tree_helper(root.right)
+        return (left[0] and right[0] and root.data == left[1] + right[1] + 1, 
+                left[1] + right[1] + 1)
+    elif not root.left and root.right:
+        right = is_size_tree_helper(root.right)
+        return (right[0] and root.data == right[1] + 1, 
+                right[1] + 1)
+    else:
+        left = is_size_tree_helper(root.left)
+        return (left[0] and root.data == left[1], 
+                left[1] + 1)

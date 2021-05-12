@@ -1,5 +1,6 @@
 from ArrayQueue import ArrayQueue
 
+
 class LinkedBinaryTree:
 
     class Node:
@@ -23,7 +24,6 @@ class LinkedBinaryTree:
     def is_empty(self):
         return len(self) == 0
 
-
     def count_nodes(self):
         def subtree_count(root):
             if (root is None):
@@ -35,7 +35,6 @@ class LinkedBinaryTree:
 
         return subtree_count(self.root)
 
-
     def sum(self):
         def subtree_sum(root):
             if (root is None):
@@ -46,7 +45,6 @@ class LinkedBinaryTree:
                 return root.data + left_sum + right_sum
 
         return subtree_sum(self.root)
-
 
     def height(self):
         def subtree_height(root):
@@ -64,7 +62,6 @@ class LinkedBinaryTree:
         if(self.is_empty()):
             raise Exception("Tree is empty")
         return subtree_height(self.root)
-
 
     def preorder(self):
         def subtree_preorder(root):
